@@ -61,7 +61,7 @@ erDiagram
     DATETIME(6) created_at
     JSON details
   }
-  REFUNDS }o--|| PAYMENTS : (payment_id)
+  REFUNDS }o--|| PAYMENTS : "payment_id"
 ```
 
 ## Indexes
