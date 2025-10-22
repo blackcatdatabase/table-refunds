@@ -9,5 +9,5 @@ CREATE TABLE IF NOT EXISTS refunds (
   status VARCHAR(50) NOT NULL,
   created_at DATETIME(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
   details JSON NULL,
-  CONSTRAINT chk_refunds_currency CHECK (currency REGEXP ''^[A-Z]{3}$'')
+  CONSTRAINT chk_refunds_currency CHECK (currency REGEXP '^[A-Z]{3}$')
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
