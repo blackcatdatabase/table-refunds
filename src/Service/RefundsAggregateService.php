@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace BlackCat\Database\Packages\Refunds\Service;
 
-use BlackCat\Core\Database\Database;
+use BlackCat\Core\Database;
 use BlackCat\Database\Packages\Refunds\Dto\RefundDto;
 use BlackCat\Database\Packages\Refunds\Mapper\RefundDtoMapper;
 use BlackCat\Database\Packages\Refunds\Repository\RefundRepository;
