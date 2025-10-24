@@ -6,7 +6,7 @@ namespace BlackCat\Database\Packages\Refunds;
 final class Definitions {
     // --- základní metadata ---
     public static function table(): string { return 'refunds'; }
-    public static function contractView(): string { return 'v_refunds_contract'; }
+    public static function contractView(): string { return 'vw_refunds'; }
     /** @return string[] */
     public static function columns(): array { return [ 'id', 'payment_id', 'amount', 'currency', 'reason', 'status', 'created_at', 'details' ]; }
     public static function pk(): string { return 'id'; }
