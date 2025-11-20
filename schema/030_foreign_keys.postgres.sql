@@ -1,4 +1,4 @@
--- Auto-generated from schema-map-postgres.psd1 (map@9d3471b)
+-- Auto-generated from schema-map-postgres.psd1 (map@62c9c93)
 -- engine: postgres
 -- table:  refunds
 ALTER TABLE refunds ADD CONSTRAINT fk_refunds_tenant FOREIGN KEY (tenant_id) REFERENCES tenants(id) ON DELETE RESTRICT;
