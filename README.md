@@ -2,7 +2,7 @@
 
 ![SQL](https://img.shields.io/badge/SQL-MySQL%208.0%2B-4479A1?logo=mysql&logoColor=white) ![License](https://img.shields.io/badge/license-BlackCat%20Proprietary-red) ![Status](https://img.shields.io/badge/status-stable-informational) ![Generated](https://img.shields.io/badge/generated-from%20schema--map-blue)
 
-<!-- Auto-generated from schema-map.psd1 @ 6cefe8e (2025-10-22T20:27:41+02:00) -->
+<!-- Auto-generated from schema-map-postgres.psd1 @ 62c9c93 (2025-11-20T21:38:11+01:00) -->
 
 > Schema package for table **refunds** (repo: `refunds`).
 
@@ -10,7 +10,7 @@
 ```
 schema/
   001_table.sql
-  # (no deferred indexes declared in map)
+  020_indexes.sql
   030_foreign_keys.sql
 ```
 
@@ -18,12 +18,14 @@ schema/
 ```bash
 # Apply schema (Linux/macOS):
 mysql -h "$DB_HOST" -u "$DB_USER" -p"$DB_PASS" "$DB_NAME" < schema/001_table.sql
+mysql -h "$DB_HOST" -u "$DB_USER" -p"$DB_PASS" "$DB_NAME" < schema/020_indexes.sql
 mysql -h "$DB_HOST" -u "$DB_USER" -p"$DB_PASS" "$DB_NAME" < schema/030_foreign_keys.sql
 ```
 
 ```powershell
 # Apply schema (Windows PowerShell):
 mysql -h $env:DB_HOST -u $env:DB_USER -p$env:DB_PASS $env:DB_NAME < schema/001_table.sql
+mysql -h $env:DB_HOST -u $env:DB_USER -p$env:DB_PASS $env:DB_NAME < schema/020_indexes.sql
 mysql -h $env:DB_HOST -u $env:DB_USER -p$env:DB_PASS $env:DB_NAME < schema/030_foreign_keys.sql
 ```
 
@@ -33,41 +35,46 @@ mysql -h $env:DB_HOST -u $env:DB_USER -p$env:DB_PASS $env:DB_NAME < schema/030_f
 docker run --rm -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=app -p 3307:3306 -d mysql:8
 sleep 15
 mysql -h 127.0.0.1 -P 3307 -u root -proot app < schema/001_table.sql
+mysql -h 127.0.0.1 -P 3307 -u root -proot app < schema/020_indexes.sql
 mysql -h 127.0.0.1 -P 3307 -u root -proot app < schema/030_foreign_keys.sql
 ```
 
 ## Columns
 | Column | Type | Null | Default | Extra |
 |-------:|:-----|:----:|:--------|:------|
-| id | BIGINT UNSIGNED | — | — | AUTO_INCREMENT, PK |
-| payment_id | BIGINT UNSIGNED | NO | — |  |
-| amount | DECIMAL(12,2) | NO | — |  |
+| id | BIGINT | — | AS | PK |
+| tenant_id | BIGINT | NO | — |  |
+| payment_id | BIGINT | NO | — |  |
+| amount | NUMERIC(12,2) | NO | — |  |
 | currency | CHAR(3) | NO | — |  |
 | reason | TEXT | YES | — |  |
 | status | VARCHAR(50) | NO | — |  |
-| created_at | DATETIME(6) | NO | CURRENT_TIMESTAMP(6) |  |
-| details | JSON | YES | — |  |
+| created_at | TIMESTAMPTZ(6) | NO | CURRENT_TIMESTAMP(6) |  |
+| details | JSONB | YES | — |  |
 
 ## Relationships
-- FK → **payments** via (payment_id) (ON DELETE CASCADE).
+- FK → **payments** via (tenant_id,payment_id) (ON DELETE CASCADE).
+- FK → **tenants** via (tenant_id) (ON DELETE RESTRICT).
 
 ```mermaid
 erDiagram
   REFUNDS {
     INT id PK
+    INT tenant_id
     INT payment_id
     DECIMAL amount
     VARCHAR currency
     VARCHAR reason
     VARCHAR status
-    DATETIME created_at
-    JSON details
+    TIMESTAMPTZ created_at
+    JSONB details
   }
-  REFUNDS }o--|| PAYMENTS : "payment_id"
+  REFUNDS }o--|| PAYMENTS : "tenant_id, payment_id"
+  REFUNDS }o--|| TENANTS : "tenant_id"
 ```
 
 ## Indexes
-- No deferred indexes declared for this table.
+- 2 deferred index statement(s) in schema/020_indexes.sql.
 
 ## Notes
 - Generated from the umbrella repository **blackcat-database** using `scripts/schema-map.psd1`.
