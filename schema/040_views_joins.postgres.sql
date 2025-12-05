@@ -1,4 +1,4 @@
--- Auto-generated from joins-postgres.yaml (map@85230ed)
+-- Auto-generated from joins-postgres.yaml (map@sha1:29CF395A3A4C8964482083733F8E613ABFBEF5CC)
 -- engine: postgres
 -- view:   refunds_by_day_and_gateway
 
@@ -14,7 +14,7 @@ JOIN payments p ON p.id = r.payment_id
 GROUP BY 1,2
 ORDER BY day DESC, gateway;
 
--- Auto-generated from joins-postgres.yaml (map@85230ed)
+-- Auto-generated from joins-postgres.yaml (map@sha1:29CF395A3A4C8964482083733F8E613ABFBEF5CC)
 -- engine: postgres
 -- view:   refunds_daily
 
@@ -29,7 +29,7 @@ GROUP BY 1
 ORDER BY day DESC;
 
 
--- Auto-generated from joins-postgres.yaml (map@85230ed)
+-- Auto-generated from joins-postgres.yaml (map@sha1:29CF395A3A4C8964482083733F8E613ABFBEF5CC)
 -- engine: postgres
 -- view:   refunds_with_payments
 
