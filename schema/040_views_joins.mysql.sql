@@ -1,5 +1,20 @@
 -- Auto-generated from joins-mysql.yaml (map@sha1:DA70105A5B799F72A56FEAB71A5171F946A770D2)
 -- engine: mysql
+-- view:   refunds_by_day_and_gateway
+
+CREATE OR REPLACE ALGORITHM=TEMPTABLE SQL SECURITY INVOKER VIEW vw_refunds_by_day_and_gateway AS
+SELECT
+  DATE(r.created_at) AS day,
+  p.gateway,
+  SUM(r.amount) AS refunds_total,
+  COUNT(*)      AS refunds_count
+FROM refunds r
+JOIN payments p ON p.id = r.payment_id
+GROUP BY DATE(r.created_at), p.gateway
+ORDER BY day DESC, gateway;
+
+-- Auto-generated from joins-mysql.yaml (map@sha1:DA70105A5B799F72A56FEAB71A5171F946A770D2)
+-- engine: mysql
 -- view:   refunds_daily
 
 CREATE OR REPLACE ALGORITHM=TEMPTABLE SQL SECURITY INVOKER VIEW vw_refunds_daily AS
@@ -10,6 +25,7 @@ SELECT
 FROM refunds r
 GROUP BY DATE(r.created_at)
 ORDER BY day DESC;
+
 
 -- Auto-generated from joins-mysql.yaml (map@sha1:DA70105A5B799F72A56FEAB71A5171F946A770D2)
 -- engine: mysql
