@@ -5,10 +5,10 @@ Payment refunds and their status.
 ## Columns
 | Column | Type | Null | Default | Description |
 | --- | --- | --- | --- | --- |
-| amount | NUMERIC(12,2) | NO |  | Refund amount (>= 0). |
-| created_at | TIMESTAMPTZ(6) | NO | CURRENT_TIMESTAMP(6) | Creation timestamp (UTC). |
+| amount | DECIMAL(12,2) | NO |  | Refund amount (>= 0). |
+| created_at | DATETIME(6) | NO | CURRENT_TIMESTAMP(6) | Creation timestamp (UTC). |
 | currency | CHAR(3) | NO |  | ISO 4217 currency code. |
-| details | JSONB | YES |  | JSON details from provider. |
+| details | JSON | YES |  | JSON details from provider. |
 | id | BIGINT | NO |  | Surrogate primary key. |
 | payment_id | BIGINT | NO |  | Payment (FK payments.id). |
 | reason | TEXT | YES |  | Reason provided by operator/gateway. |
@@ -49,11 +49,11 @@ Foreign keys:
 ## Views
 | View | Engine | Flags | File |
 | --- | --- | --- | --- |
-| vw_refunds | mysql | algorithm=MERGE, security=INVOKER | [packages\refunds\schema\040_views.mysql.sql](https://github.com/blackcatacademy/blackcat-database/packages/refunds/schema/040_views.mysql.sql) |
-| vw_refunds_by_day_and_gateway | mysql | algorithm=TEMPTABLE, security=INVOKER | [packages\refunds\schema\040_views_joins.mysql.sql](https://github.com/blackcatacademy/blackcat-database/packages/refunds/schema/040_views_joins.mysql.sql) |
-| vw_refunds_daily | mysql | algorithm=TEMPTABLE, security=INVOKER | [packages\refunds\schema\040_views_joins.mysql.sql](https://github.com/blackcatacademy/blackcat-database/packages/refunds/schema/040_views_joins.mysql.sql) |
-| vw_refunds_with_payments | mysql | algorithm=TEMPTABLE, security=INVOKER | [packages\refunds\schema\040_views_joins.mysql.sql](https://github.com/blackcatacademy/blackcat-database/packages/refunds/schema/040_views_joins.mysql.sql) |
-| vw_refunds | postgres |  | [packages\refunds\schema\040_views.postgres.sql](https://github.com/blackcatacademy/blackcat-database/packages/refunds/schema/040_views.postgres.sql) |
-| vw_refunds_by_day_and_gateway | postgres |  | [packages\refunds\schema\040_views_joins.postgres.sql](https://github.com/blackcatacademy/blackcat-database/packages/refunds/schema/040_views_joins.postgres.sql) |
-| vw_refunds_daily | postgres |  | [packages\refunds\schema\040_views_joins.postgres.sql](https://github.com/blackcatacademy/blackcat-database/packages/refunds/schema/040_views_joins.postgres.sql) |
-| vw_refunds_with_payments | postgres |  | [packages\refunds\schema\040_views_joins.postgres.sql](https://github.com/blackcatacademy/blackcat-database/packages/refunds/schema/040_views_joins.postgres.sql) |
+| vw_refunds | mysql | algorithm=MERGE, security=INVOKER | [schema\040_views.mysql.sql](schema\040_views.mysql.sql) |
+| vw_refunds_by_day_and_gateway | mysql | algorithm=TEMPTABLE, security=INVOKER | [schema\040_views_joins.mysql.sql](schema\040_views_joins.mysql.sql) |
+| vw_refunds_daily | mysql | algorithm=TEMPTABLE, security=INVOKER | [schema\040_views_joins.mysql.sql](schema\040_views_joins.mysql.sql) |
+| vw_refunds_with_payments | mysql | algorithm=TEMPTABLE, security=INVOKER | [schema\040_views_joins.mysql.sql](schema\040_views_joins.mysql.sql) |
+| vw_refunds | postgres |  | [schema\040_views.postgres.sql](schema\040_views.postgres.sql) |
+| vw_refunds_by_day_and_gateway | postgres |  | [schema\040_views_joins.postgres.sql](schema\040_views_joins.postgres.sql) |
+| vw_refunds_daily | postgres |  | [schema\040_views_joins.postgres.sql](schema\040_views_joins.postgres.sql) |
+| vw_refunds_with_payments | postgres |  | [schema\040_views_joins.postgres.sql](schema\040_views_joins.postgres.sql) |
