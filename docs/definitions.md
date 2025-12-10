@@ -5,10 +5,10 @@ Payment refunds and their status.
 ## Columns
 | Column | Type | Null | Default | Description |
 | --- | --- | --- | --- | --- |
-| amount | DECIMAL(12,2) | NO |  | Refund amount (>= 0). |
-| created_at | DATETIME(6) | NO | CURRENT_TIMESTAMP(6) | Creation timestamp (UTC). |
+| amount | mysql: DECIMAL(12,2) / postgres: NUMERIC(12,2) | NO |  | Refund amount (>= 0). |
+| created_at | mysql: DATETIME(6) / postgres: TIMESTAMPTZ(6) | NO | CURRENT_TIMESTAMP(6) | Creation timestamp (UTC). |
 | currency | CHAR(3) | NO |  | ISO 4217 currency code. |
-| details | JSON | YES |  | JSON details from provider. |
+| details | mysql: JSON / postgres: JSONB | YES |  | JSON details from provider. |
 | id | BIGINT | NO |  | Surrogate primary key. |
 | payment_id | BIGINT | NO |  | Payment (FK payments.id). |
 | reason | TEXT | YES |  | Reason provided by operator/gateway. |
