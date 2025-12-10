@@ -49,11 +49,11 @@ Foreign keys:
 ## Views
 | View | Engine | Flags | File |
 | --- | --- | --- | --- |
-| vw_refunds | mysql | algorithm=MERGE, security=INVOKER | [schema\040_views.mysql.sql](schema\040_views.mysql.sql) |
-| vw_refunds_by_day_and_gateway | mysql | algorithm=TEMPTABLE, security=INVOKER | [schema\040_views_joins.mysql.sql](schema\040_views_joins.mysql.sql) |
-| vw_refunds_daily | mysql | algorithm=TEMPTABLE, security=INVOKER | [schema\040_views_joins.mysql.sql](schema\040_views_joins.mysql.sql) |
-| vw_refunds_with_payments | mysql | algorithm=TEMPTABLE, security=INVOKER | [schema\040_views_joins.mysql.sql](schema\040_views_joins.mysql.sql) |
-| vw_refunds | postgres |  | [schema\040_views.postgres.sql](schema\040_views.postgres.sql) |
-| vw_refunds_by_day_and_gateway | postgres |  | [schema\040_views_joins.postgres.sql](schema\040_views_joins.postgres.sql) |
-| vw_refunds_daily | postgres |  | [schema\040_views_joins.postgres.sql](schema\040_views_joins.postgres.sql) |
-| vw_refunds_with_payments | postgres |  | [schema\040_views_joins.postgres.sql](schema\040_views_joins.postgres.sql) |
+| vw_refunds | mysql | algorithm=MERGE, security=INVOKER | [../schema/040_views.mysql.sql](../schema/040_views.mysql.sql) |
+| vw_refunds_by_day_and_gateway | mysql | algorithm=TEMPTABLE, security=INVOKER | [../schema/040_views_joins.mysql.sql](../schema/040_views_joins.mysql.sql) |
+| vw_refunds_daily | mysql | algorithm=TEMPTABLE, security=INVOKER | [../schema/040_views_joins.mysql.sql](../schema/040_views_joins.mysql.sql) |
+| vw_refunds_with_payments | mysql | algorithm=TEMPTABLE, security=INVOKER | [../schema/040_views_joins.mysql.sql](../schema/040_views_joins.mysql.sql) |
+| vw_refunds | postgres |  | [../schema/040_views.postgres.sql](../schema/040_views.postgres.sql) |
+| vw_refunds_by_day_and_gateway | postgres |  | [../schema/040_views_joins.postgres.sql](../schema/040_views_joins.postgres.sql) |
+| vw_refunds_daily | postgres |  | [../schema/040_views_joins.postgres.sql](../schema/040_views_joins.postgres.sql) |
+| vw_refunds_with_payments | postgres |  | [../schema/040_views_joins.postgres.sql](../schema/040_views_joins.postgres.sql) |
