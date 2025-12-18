@@ -1,0 +1,35 @@
+{
+  "tables": {
+    "refunds": {
+      "columns": {
+        "amount": {
+          "strategy": "passthrough"
+        },
+        "created_at": {
+          "strategy": "passthrough"
+        },
+        "currency": {
+          "strategy": "passthrough"
+        },
+        "details": {
+          "strategy": "passthrough"
+        },
+        "id": {
+          "strategy": "passthrough"
+        },
+        "payment_id": {
+          "strategy": "passthrough"
+        },
+        "reason": {
+          "strategy": "passthrough"
+        },
+        "status": {
+          "strategy": "passthrough"
+        },
+        "tenant_id": {
+          "strategy": "passthrough"
+        }
+      }
+    }
+  }
+}
