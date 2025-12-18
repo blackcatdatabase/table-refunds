@@ -1,4 +1,4 @@
--- Auto-generated from core\joins-mysql.yaml (map@sha1:DA70105A5B799F72A56FEAB71A5171F946A770D2)
+-- Auto-generated from core/joins-mysql.yaml (map@sha1:DA70105A5B799F72A56FEAB71A5171F946A770D2)
 -- engine: mysql
 -- view:   refunds_by_day_and_gateway
 
@@ -13,7 +13,7 @@ JOIN payments p ON p.id = r.payment_id
 GROUP BY DATE(r.created_at), p.gateway
 ORDER BY day DESC, gateway;
 
--- Auto-generated from core\joins-mysql.yaml (map@sha1:DA70105A5B799F72A56FEAB71A5171F946A770D2)
+-- Auto-generated from core/joins-mysql.yaml (map@sha1:DA70105A5B799F72A56FEAB71A5171F946A770D2)
 -- engine: mysql
 -- view:   refunds_daily
 
@@ -27,7 +27,7 @@ GROUP BY DATE(r.created_at)
 ORDER BY day DESC;
 
 
--- Auto-generated from core\joins-mysql.yaml (map@sha1:DA70105A5B799F72A56FEAB71A5171F946A770D2)
+-- Auto-generated from core/joins-mysql.yaml (map@sha1:DA70105A5B799F72A56FEAB71A5171F946A770D2)
 -- engine: mysql
 -- view:   refunds_with_payments
 
