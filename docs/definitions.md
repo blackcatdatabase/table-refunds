@@ -3,16 +3,17 @@
 Payment refunds and their status.
 
 ## Columns
-| Column | Type | Null | Default | Description |
-| --- | --- | --- | --- | --- |
-| id | BIGINT | NO |  | Surrogate primary key. |
-| payment_id | BIGINT | NO |  | Payment (FK payments.id). |
-| amount | mysql: DECIMAL(12,2) / postgres: NUMERIC(12,2) | NO |  | Refund amount (>= 0). |
-| currency | CHAR(3) | NO |  | ISO 4217 currency code. |
-| reason | TEXT | YES |  | Reason provided by operator/gateway. |
-| status | VARCHAR(50) | NO |  | Gateway/state status label. |
-| created_at | mysql: DATETIME(6) / postgres: TIMESTAMPTZ(6) | NO | CURRENT_TIMESTAMP(6) | Creation timestamp (UTC). |
-| details | mysql: JSON / postgres: JSONB | YES |  | JSON details from provider. |
+| Column | Type | Null | Default | Description | Crypto |
+| --- | --- | --- | --- | --- | --- |
+| id | BIGINT | NO |  | Surrogate primary key. |  |
+| tenant_id | BIGINT | NO |  | Owning tenant (FK tenants.id). |  |
+| payment_id | BIGINT | NO |  | Payment (FK payments.id). |  |
+| amount | mysql: DECIMAL(12,2) / postgres: NUMERIC(12,2) | NO |  | Refund amount (>= 0). |  |
+| currency | CHAR(3) | NO |  | ISO 4217 currency code. |  |
+| reason | TEXT | YES |  | Reason provided by operator/gateway. |  |
+| status | VARCHAR(50) | NO |  | Gateway/state status label. |  |
+| created_at | mysql: DATETIME(6) / postgres: TIMESTAMPTZ(6) | NO | CURRENT_TIMESTAMP(6) | Creation timestamp (UTC). |  |
+| details | mysql: JSON / postgres: JSONB | YES |  | JSON details from provider. |  |
 
 ## Engine Details
 
