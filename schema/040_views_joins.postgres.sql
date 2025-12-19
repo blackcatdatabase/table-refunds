@@ -1,4 +1,20 @@
--- Auto-generated from joins-postgres.yaml (map@sha1:29CF395A3A4C8964482083733F8E613ABFBEF5CC)
+-- Auto-generated from core/joins-postgres.yaml (map@sha1:29CF395A3A4C8964482083733F8E613ABFBEF5CC)
+-- engine: postgres
+-- view:   refunds_by_day_and_gateway
+
+-- Refunds aggregated by day and gateway
+CREATE OR REPLACE VIEW vw_refunds_by_day_and_gateway AS
+SELECT
+  date_trunc('day', r.created_at) AS day,
+  p.gateway,
+  SUM(r.amount) AS refunds_total,
+  COUNT(*)      AS refunds_count
+FROM refunds r
+JOIN payments p ON p.id = r.payment_id
+GROUP BY 1,2
+ORDER BY day DESC, gateway;
+
+-- Auto-generated from core/joins-postgres.yaml (map@sha1:29CF395A3A4C8964482083733F8E613ABFBEF5CC)
 -- engine: postgres
 -- view:   refunds_by_day_and_gateway
 
@@ -29,7 +45,7 @@ GROUP BY 1
 ORDER BY day DESC;
 
 
--- Auto-generated from joins-postgres.yaml (map@sha1:29CF395A3A4C8964482083733F8E613ABFBEF5CC)
+-- Auto-generated from core/joins-postgres.yaml (map@sha1:29CF395A3A4C8964482083733F8E613ABFBEF5CC)
 -- engine: postgres
 -- view:   refunds_with_payments
 
